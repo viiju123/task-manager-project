@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="../css/signup.css">
+</head>
+
+<body>
+    <div class="bodi">
+        <div class="container" action="dashbord.html">
+            <div style="padding-top: 35px;">
+                <p style="font-weight: bold; text-align: center; font-size: larger;">REGISTER</p>
+            </div>
+            <div style="margin-top: 20px;">
+                <hr>
+            </div>
+            <div class="wrap">
+                <div>
+                    <p style="font-weight: bold; opacity: 0.5;">Name</p>
+                    <input type="text" id="name">
+                </div>
+                <div style="color: red; display: none;" id="nameWarn">
+                    <p>Name is required</p>
+                </div>
+                <div>
+                    <p style="font-weight: bold; opacity: 0.5;">Email</p>
+                    <input type="email" id="emailId">
+                </div>
+                <div style="color: red; display: none;" id="emailWarn">
+                    <p>Email is required</p>
+                </div>
+                <div>
+                    <p style="font-weight: bold; opacity: 0.5;">Password</p>
+                    <input type="password" id="pass">
+                </div>
+                <div style="color: red; display: none;" id="passwordWarn">
+                    <p>Password is required</p>
+                </div>
+                <div>
+                    <p style="font-weight: bold; opacity: 0.5;">Confirm Password</p>
+                    <input type="password" id="confirmPass">
+                </div>
+                <div style="color: red; display: none;" id="passwordMatchWarn">
+                    <p>Passwords do not match</p>
+                </div>
+                <div>
+                    <button style="padding: 5px; width: 90%; margin-top: 20px; background-color: silver; color: black; text-transform: uppercase; border-radius: 15px; font-weight: bolder;" id="sign">Signup</button>
+                </div>
+                <div style="display: flex; align-items: center; margin-top: 25px; justify-content: center;">
+                    <p>Have an Account?</p>
+                    <p style="color: rgb(101, 101, 223); margin-left: 5px;">Login Here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../javascript/signup.js"></script>
+</body>
+
+</html>
