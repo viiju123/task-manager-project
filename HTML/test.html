@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+    /* 🌟 General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🔖 Header */
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 📝 Form */
+.form-container {
+    display: none;
+    background: white;
+    padding: 15px;
+    width: 50%;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
+
+/* 📊 Progress Bar */
+.progress-container {
+    margin: 20px;
+    width: 50%;
+    margin: auto;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+#progress {
+    height: 15px;
+    width: 0%;
+    background: #28a745;
+    border-radius: 5px;
+}
+
+/* 📋 Task List */
+.task-container {
+    width: 60%;
+    margin: auto;
+    background: white;
+    padding: 15px;
+}
+
+.task {
+    background: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    border-left: 5px solid #4CAF50;
+}
+
+.task.overdue { border-left: 5px solid red; }
+.task.in-progress { border-left: 5px solid orange; }
+.task.not-started { border-left: 5px solid blue; }
+
+</style>
+<body>
+
+    <!-- 🌟 Header -->
+    <header>
+        <h1>📋 Task Manager</h1>
+        <button id="openCreateForm">➕ Add Task</button>
+    </header>
+
+    <!-- 📝 Create/Edit Form (Hidden by Default) -->
+    <div class="form-container" id="taskForm">
+        <h2 id="formTitle">Create Task</h2>
+        <input type="text" id="taskName" placeholder="Task Name" required>
+        <textarea id="taskDescription" placeholder="Task Description"></textarea>
+        <input type="date" id="startDate">
+        <input type="date" id="endDate">
+        <select id="priority">
+            <option value="High">🔴 High</option>
+            <option value="Medium">🟡 Medium</option>
+            <option value="Low">🟢 Low</option>
+        </select>
+        <button id="saveTask">Save Task</button>
+        <button id="cancelTask">Cancel</button>
+    </div>
+
+    <!-- 📊 Progress Bar -->
+    <div class="progress-container">
+        <p>Overall Progress: <span id="progressText">0%</span></p>
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+    </div>
+
+    <!-- 📋 Task Lists -->
+    <div class="task-container">
+        <h2>🚀 Task List</h2>
+        <div id="taskList"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const taskForm = document.getElementById("taskForm");
+    const openCreateForm = document.getElementById("openCreateForm");
+    const saveTask = document.getElementById("saveTask");
+    const cancelTask = document.getElementById("cancelTask");
+    const taskList = document.getElementById("taskList");
+    const progressBar = document.getElementById("progress");
+    const progressText = document.getElementById("progressText");
+
+    let tasks = [];
+
+    // 📝 Show Create Form
+    openCreateForm.addEventListener("click", function () {
+        taskForm.style.display = "block";
+    });
+
+    // ❌ Hide Form
+    cancelTask.addEventListener("click", function () {
+        taskForm.style.display = "none";
+    });
+
+    // ✅ Save Task
+    saveTask.addEventListener("click", function () {
+        const taskName = document.getElementById("taskName").value;
+        const taskDescription = document.getElementById("taskDescription").value;
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
+        const priority = document.getElementById("priority").value;
+
+        if (!taskName || !endDate) return alert("Task name and end date are required!");
+
+        const task = {
+            name: taskName,
+            description: taskDescription,
+            startDate,
+            endDate,
+            priority,
+            completed: false
+        };
+
+        tasks.push(task);
+        updateTasks();
+        taskForm.style.display = "none";
+    });
+
+    // 📊 Update Task List & Progress
+    function updateTasks() {
+        taskList.innerHTML = "";
+        let completedCount = 0;
+
+        tasks.forEach((task, index) => {
+            const today = new Date().toISOString().split("T")[0];
+            let status = "not-started";
+
+            if (task.completed) {
+                completedCount++;
+            } else if (today > task.endDate) {
+                status = "overdue";
+            } else if (today >= task.startDate && today <= task.endDate) {
+                status = "in-progress";
+            }
+
+            let taskDiv = document.createElement("div");
+            taskDiv.classList.add("task", status);
+            taskDiv.innerHTML = `
+                <span>${task.name} (${task.priority})</span>
+                <button onclick="deleteTask(${index})">❌</button>
+                <button onclick="editTask(${index})">✏️</button>
+                <input type="checkbox" ${task.completed ? "checked" : ""} onclick="markComplete(${index})">
+            `;
+            taskList.appendChild(taskDiv);
+        });
+
+        let progressPercent = (completedCount / tasks.length) * 100 || 0;
+        progressBar.style.width = progressPercent + "%";
+        progressText.innerText = Math.round(progressPercent) + "%";
+    }
+});
+
+    </script>
+</body>
+</html>
+

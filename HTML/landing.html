@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+
+
+            background-image: url("landing\ image.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            color: white;
+
+
+
+        }
+
+        .container {
+            width: 100%;
+
+        }
+
+        img {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            line-height: 50px;
+            border-bottom: 1px solid black;
+            background-color: #36454F;
+        }
+
+        button {
+            background-color: #FF7F50;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px;
+           
+        }
+        .bottom {
+    position: fixed;
+    bottom: 80px; 
+    left: 200px; 
+     
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+  }
+  .text{
+    
+    
+    font-size: 2em; 
+    font-weight: bold; 
+    color: #333; 
+    text-align: center; 
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards;
+  
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .bottom button {
+  
+  animation: pulse 1.5s infinite ease-in-out; 
+  transition: transform 0.2s ease; 
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); 
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bottom button:hover {
+  transform: scale(1.1); 
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="header">
+            <div>
+                <h1>TO DO LIST</h1>
+            </div>
+
+            <div>
+                <button>SIGNUP</button>
+                <button style="padding: 4x;">LOGIN</button>
+                <button>ABOUT ME</button>
+            </div>
+
+        </div>
+        <div class="text">
+            <h3>"Plan,Track,& Achieve Your Goals!!!</h3>
+        </div>
+        <div class="bottom">
+            <button style="border-radius: 7px; background-color: #527b15; color: black;">GET STARTED</button>
+        </div>
+        
+    </div>
+</body>
+
+</html>

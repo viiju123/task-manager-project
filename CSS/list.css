@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    background: linear-gradient(to right, #fbc2eb, #a6c1ee); /* Soft Pink-Blue */
+
+}
+.container{
+    width: 100%;
+    display: flex;
+
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+    background: rgba(255, 255, 255, 0.2);
+    
+
+    
+}
+.main{
+    width: 80%;
+    
+
+}
+.wrapper{
+    width: 100%;
+    
+    
+}
+input{
+    width: 80%;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+select {
+    width: 100px;
+    height: 35px; 
+    overflow: hidden;
+  }
+  .inputs{
+    margin: 10px;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
+    max-width: 300px; 
+}
+
+.search-container span {
+    font-size: 20px;
+    color: #888;
+    margin-right: 8px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+.center-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    height: 100vh;
+}
+.create-btn button {
+    text-align: center;
+    font-size: 25px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.create-btn button:hover {
+    background-color: #0056b3;
+}

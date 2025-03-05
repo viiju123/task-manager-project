@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    outline: 1px solid red;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #E3FDFD, #A6E3E9);
+    
+}
+
+
+.main-container{
+    width: 30%;
+    border: 2px solid black;
+    border-radius: 4px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    background: white;
+
+}
+.heading{
+    text-align:center ;
+    font-weight: 600;
+    font-size: larger;
+   margin: 15px;
+    
+    
+
+}
+.input-container{
+    width: 100%;
+    
+}
+input{
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.inputs{
+   margin: 15px;
+}
+
+p{
+    font-weight: 600;
+}
+
+    
+
+.buttons{
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(107, 87, 87, 0.3);
+    font-size: large;
+    font-weight: 600;
+    background: linear-gradient(to right, #38A3A5, #57CC99); 
+
+}
+button:hover {
+    background: linear-gradient(to right, #57CC99, #38A3A5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+.already{
+    margin: 20px;
+}
+.signup-link {
+    color: #38A3A5;
+    font-weight: bold;
+    text-decoration: none;
+}
+.signup-link:hover {
+    text-decoration: underline;
+}
